@@ -1,0 +1,170 @@
+body {
+    background-color: #202124;
+}
+
+.screen-button {
+    display: flex;
+}
+
+.record,
+.pause,
+.resumen,
+.shareOff,
+.shareOn,
+.stop,
+.micOff,
+.micOn,
+.micInactive {
+    border: 0px;
+    border-radius: 15px;
+    width: 60px;
+    box-shadow: inset 0px 0px 0px 1px #202124;
+}
+
+.micInactive {
+    background-color: rgb(255 99 71 / 56%);
+}
+
+.screen-button>button:not([disabled]):hover {
+    box-shadow: inset 0px 0px 0px 1px #689F38;
+    background-color: #8BC34A;
+    transition: all 0.5s ease;
+}
+
+.shareOn::before {
+    content: url("../icons/popup-link-icon.svg");
+}
+
+.shareOff::before {
+    content: url("../icons/close-window-icon.svg");
+}
+
+.record::before {
+    content: url("../icons/red-circle-icon.svg");
+}
+
+.stop::before {
+    content: url("../icons/stop-button-round-icon.svg");
+}
+
+.pause::before {
+    content: url("../icons/pause-button-icon.svg");
+}
+
+.resumen::before {
+    content: url("../icons/play-button-round-icon.svg");
+}
+
+.micOff::before,
+.micInactive::before {
+    content: url("../icons/microphone-slash-icon.svg");
+}
+
+.micOn::before {
+    content: url("../icons/mic-microphone-icon.svg");
+}
+
+.shareOn::before,
+.shareOff::before,
+.shareOff::before,
+.record::before,
+.stop::before,
+.pause::before,
+.resumen::before {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin: 5px auto;
+}
+
+.micOn::before,
+.micOff::before,
+.micInactive::before {
+    display: block;
+    width: 14px;
+    height: 16px;
+    margin: 5px auto;
+}
+
+@keyframes hide-button {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes acti-button {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        display: block;
+    }
+}
+
+.hide-animation {
+    animation-name: hide-button;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    display: none;
+}
+
+.acti-animation {
+    animation-name: acti-button;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 300px;
+    height: 450px;
+    background-color:#454545;
+}
+.screen-video video{
+    border: 2px solid #546E7A;
+    background-color: #202124;
+}
+.screen-cronometro h3{
+    font-family: monospace;
+    font-size: 20px;
+    color: white;
+    margin: 0px;
+}
+.screen-data{
+    color: white;
+    font-size: 12px;
+    height: 100px;
+}
+.config{
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-evenly;
+}
+@keyframes rotate {
+from {
+    transform: rotate(0deg);
+}
+to {
+    transform: rotate(360deg);
+}
+}
+
+.rotating-span {
+display: inline-block;
+animation: rotate 1s linear infinite;
+}
+.header-cabecera{
+    color: #546E7A;
+    text-align: center;
+}

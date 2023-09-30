@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="eS">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECORDING - MP4</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header>
+        <section id="headerControl" class="header-cabecera" style="display: none;">
+            <span>-</span>
+        </section>
+    </header>
+    <section id="mainControl" class="main">
+        <div class="screen-button">
+            <button id="btnShareScreen" value="false" class="shareOn"></button>
+            <button id="btnRecord" class="record" value="recording"></button>
+            <button id="btnStop" class="stop"></button>
+            <button id="btnMic" class="micOn"></button>
+        </div>
+        <div class="screen-cronometro" ><h3 id="hms" ></h3></div>
+        <div class="screen-video">
+            <video id="video" width="240" height="135" autoplay playsinline id="player" muted></video>
+        </div>
+        <div class="screen-data">
+            <code>
+                <pre id="dataVideo"></pre>
+            </code>
+        </div>
+        <div class="config">
+            <select id="resolucion" ></select>
+            <select id="frameRate" ></select>
+            <select id="audioSystem" ></select>
+            <select id="audioMic" ></select>
+            <select id="camera" ></select>
+            <select id="tasaBitsAudio" ></select>
+            <select id="tasaBitsVideo" ></select>
+        </div>
+    </section>
+</body>
+
+<script type="module" src="./js/main.js"></script>
+</html>
