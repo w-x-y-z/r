@@ -136,7 +136,7 @@ export const Recording = {
         // true: activo | false: silenciado
         return this.streamMic.getAudioTracks()[0].enabled
     },
-    mixer(stream1, stream2) {
+    /*mixer(stream1, stream2) {
         const ctx = new AudioContext();
         const dest = ctx.createMediaStreamDestination();
 
@@ -148,6 +148,33 @@ export const Recording = {
         let tracks = dest.stream.getTracks();
         tracks = tracks.concat(stream1.getVideoTracks()).concat(stream2.getVideoTracks());
         return new MediaStream(tracks)
+    },*/
+    mixer(stream1, stream2) {
+        const audioContext = new AudioContext();
+        const destination = audioContext.createMediaStreamDestination();
+    
+        // Función para mezclar las pistas de audio de un stream, si tiene pistas de audio
+        const mixAudioTracks = (stream) => {
+            if (stream.getAudioTracks().length > 0) {
+                const source = audioContext.createMediaStreamSource(stream);
+                source.connect(destination); // Conecta las pistas de audio al destino
+            }
+        };
+    
+        // Mezclar audio del primer y segundo stream (si tienen)
+        mixAudioTracks(stream1);
+        mixAudioTracks(stream2);
+    
+        // Combinar las pistas de video de ambos streams (si existen)
+        const videoTracks = [...stream1.getVideoTracks(), ...stream2.getVideoTracks()];
+    
+        // Crear un nuevo MediaStream con las pistas de audio y video mezcladas
+        const mixedStream = new MediaStream([...destination.stream.getAudioTracks(), ...videoTracks]);
+    
+        // Cerrar el AudioContext cuando ya no sea necesario
+        //audioContext.close();
+    
+        return mixedStream;
     },
     async getStreamScreen() {
         return this.streamScreen;
